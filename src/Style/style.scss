@@ -1,0 +1,269 @@
+//Font Family
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+//Variables
+$bodyBg: #EEEEEE;
+$customerListBg: #ffff;
+$cHeaderColor: #334257;
+
+
+::-webkit-scrollbar
+{
+  width: .5rem;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+  border-radius: .5rem;
+  background-color: $cHeaderColor;
+}
+
+
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1;
+  background: $bodyBg;
+}
+
+
+#root {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#customerContent {
+  width: 70%;
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    padding: 0 .75rem;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: $cHeaderColor;
+    @media screen and (max-width: 480px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  hr {
+    color: $cHeaderColor;
+    margin: 1rem 0;
+  }
+
+  #searchInputArea {
+    position: relative;
+    overflow: hidden;
+
+    input {
+      width: 100%;
+      border: none;
+      background: white;
+      border-radius: .75rem;
+      height: 3rem;
+      text-indent: 3rem;
+      font-size: 1rem;
+      font-family: 'Quicksand', sans-serif;
+
+      &:focus {
+        outline: none;
+        border: none;
+      }
+
+      @media screen and (max-width: 480px) {
+        height: 2.4rem;
+        font-size: .85rem;
+        text-indent: 2.4rem;
+      }
+    }
+
+    .searchIcon {
+      position: absolute;
+      top: .75rem;
+      left: .75rem;
+      fill: $cHeaderColor;
+      font-size: 1.4rem;
+      @media screen and (max-width: 480px) {
+        font-size: 1rem;
+      }
+    }
+    .timesIcon {
+      position: absolute;
+      top: .75rem;
+      right: -2rem;
+      fill: $cHeaderColor;
+      font-size: 1.4rem;
+      opacity: 0;
+      transition: all .5s;
+      cursor: pointer;
+      &.active {
+        right: .75rem;
+        opacity: 1;
+        transition: all .5s;
+      }
+      @media screen and (max-width: 480px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .customerListArea {
+    height: 530px;
+    overflow: auto;
+    background: $customerListBg;
+    margin-top: 1rem;
+    border-radius: .75rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    position: relative;
+    @media screen and (max-width: 480px) {
+      height: 475px;
+    }
+
+    .customerDetailHeaders {
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(5, 12rem);
+      grid-row-gap: .25rem;
+      row-gap: .25rem;
+      padding: .75rem;
+      width: 100%;
+      position: sticky;
+      top: -17px;
+      background: #fff;
+      @media screen and (max-width: 480px) {
+        display: none;
+      }
+
+      & span:nth-child(4) {
+        text-align: center;
+      }
+
+      & span:last-child {
+        text-align: right;
+        margin-right: 2rem;
+      }
+
+      span {
+        color: $cHeaderColor;
+        font-weight: 500;
+      }
+
+    }
+
+    .customer-card {
+      height: 100px;
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(5, 12rem);
+      background: $bodyBg;
+      border-radius: .75rem;
+      row-gap: .25rem;
+      padding: .75rem;
+      align-content: space-evenly;
+      @media screen and (max-width: 480px) {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        padding: .75rem;
+        height: 140px;
+        & span {
+          font-size: .85rem;
+        }
+      }
+
+      & span:last-child {
+        text-align: right;
+        margin-right: 1.8rem;
+      }
+
+      @media screen and (max-width: 480px) {
+        & span {
+          font-size: .85rem;
+          width: 8rem;
+          text-align: left;
+          padding-left: .5rem;
+
+        }
+        & span:last-child {
+          text-align: left;
+          width: 0;
+          margin-right: 5rem;
+        }
+        .cHeader {
+          width: 0;
+          font-weight: 600;
+          white-space: nowrap;
+          color: $cHeaderColor;
+        }
+      }
+      @media screen and (min-width: 1020px) {
+        .cHeader {
+          display: none !important;
+        }
+        br {
+          display: none;
+        }
+      }
+
+      img {
+        width: 120px;
+        height: 100%;
+        border-radius: .75rem;
+        @media screen and (max-width: 480px) {
+          font-size: 110px;
+          width: 95px;
+        }
+      }
+    }
+  }
+}
